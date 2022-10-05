@@ -1,0 +1,101 @@
+<main>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col">
+                    <h1>Agregar Cliente</h1>
+                </div>
+                <div class="col">
+                    <button class="btn btn-dark px-3 py-2" routerLink="/list" aria-current="forms">Listar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form [formGroup]="formCustomer" novalidate (submit)="customerAdd()">
+                <div class="row g-3">
+                    <div class="col-sm-6">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder=""
+                            value="" required>
+                        <div class="text-danger" *ngIf="Nombre?.errors?.['required'] ">
+                            Nombre es requerido.
+                        </div>
+                        <div class="text-danger" *ngIf="Nombre?.errors?.['minlength']">
+                            Nombre requiere mas caracteres para ser valido.
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label for="apellido" class="form-label">Apellido</label>
+                        <input type="text" class="form-control" id="apellido" formControlName="apellido" placeholder=""
+                            value="" required>
+                        <div class="text-danger" *ngIf="Apellido?.errors?.['required']">
+                            Apellido es requerido.
+                        </div>
+                        <div class="text-danger" *ngIf="Apellido?.errors?.['minlength']">
+                            Apellido requiere mas caracteres para ser valido.
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" formControlName="email"
+                            placeholder="you@example.com">
+                        <div class="text-danger" *ngIf="Email?.errors?.['required']">
+                            Email es requerido.
+                        </div>
+                    </div>
+
+                    <div class="col-5">
+                        <label for="dni" class="form-label">Dni</label>
+                        <input type="number" class="form-control" id="dni" formControlName="dni" placeholder="" value=""
+                            required>
+                        <div class="text-danger" *ngIf="Dni?.errors?.['required']">
+                            DNI es requerido y debe ser mas de 7 caracteres numericos.
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="direccion" class="form-label">Direccion</label>
+                        <input type="text" class="form-control" id="direccion" formControlName="direccion"
+                            placeholder="Calle xxx" required>
+                        <div class="text-danger" *ngIf="Direccion?.errors?.['required']">
+                            Direccion es requerida.
+                        </div>
+                        <div class="text-danger" *ngIf="Direccion?.errors?.['minlength']">
+                            Direccion requiere mas caracteres para ser valido.
+                        </div>
+                    </div>
+
+                    <div class="col-md-5">
+                        <label for="fechaNac" class="form-label">Fecha Nacimiento</label>
+                        <input type="date" class="form-control" id="fechaNac" formControlName="fechaNac"
+                            placeholder="dd/mm/yyyy" required>
+                        <div class="text-danger" *ngIf="FechaNac?.errors?.['required']">
+                            Fecha Nacimiento es requerida.
+                        </div>
+                    </div>
+
+                    <div class="col-md-5">
+                        <label for="telefono" class="form-label">Telefono</label>
+                        <input type="number" class="form-control" id="telefono" formControlName="telefono"
+                            placeholder="2640000000" required>
+                        <div class="text-danger" *ngIf="Telefono?.errors?.['required']">
+                            Telefono es requerido y debe ser 10 caracteres numericos.
+                        </div>                        
+                    </div>
+                </div>
+                <br *ngIf="mjeError">
+                <div class="alert alert-danger" role="alert" *ngIf="mjeError">
+                    {{mje}}
+                </div>
+                <hr class="my-4">
+                <button class="w-100 btn btn-dark btn-lg" type="submit"
+                    [disabled]="valida(formCustomer)">Agregar</button>
+            </form>
+        </div>
+    </div>
+</main>

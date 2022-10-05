@@ -1,0 +1,31 @@
+<main class="form-signin w-75 m-auto justify-content-center container-h">
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Iniciar Sesion</h1>
+            <br>
+            <form [formGroup]="loginForm" (submit)="login()">        
+                <div class="form-floating">
+                    <input type="email" class="form-control" formControlName="email" placeholder="name@example.com">
+                    <label for="floatingInput">Email</label>
+                </div>
+                <br>
+                <div class="form-floating">
+                    <input type="password" class="form-control" formControlName="password" placeholder="Password">
+                    <label for="floatingPassword">Password</label>
+                </div>
+                <div class="form-floating">
+                    <div class="alert alert-danger" role="alert" *ngIf="errorSession">
+                        Ocurrió un error con tu usuario y/o password, vuelve a intentarlo
+                    </div>    
+                </div>
+                <br>
+                <button class="w-100 btn btn-lg btn-dark" type="submit">Ingresar</button>
+                <p class="mt-5 mb-3">Usuario: xxx@gmail.com  Password:1234567</p>
+                <p class="mt-5 mb-3 text-muted">© 2022</p>
+            </form>    
+        </div>
+        <div class="col-md-6">
+            <pr-list-customer></pr-list-customer>
+        </div>
+    </div>    
+</main>
